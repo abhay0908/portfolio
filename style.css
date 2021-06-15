@@ -394,8 +394,54 @@ footer p{
     text-decoration: none;
     font-weight: 500;
 }
+  
+@media(max-width: 400px){
+    .max-width{
+        padding: 0 25px;
+    }
+    .navbar .logo a{
+        font-size: 20px;
+    }
+    .home .home-content .text-1{
+        font-size: 20px;
+    }
+    .home .home-content .text-2{
+        font-size: 50px;
+    }
+    .home .home-content .text-3{
+        font-size: 25px;
+    }
+    .navbar .menu li a{
+        font-size: 8px;
+    }
+    .home .home-content a{
+        font-size: 13px;
+    }
 
-
+} 
+@media(max-width: 370px){
+    .max-width{
+        padding: 0 20px;
+    }
+    .navbar .logo a{
+        font-size: 18px;
+    }
+    .home .home-content .text-1{
+        font-size: 18px;
+    }
+    .home .home-content .text-2{
+        font-size: 40px;
+    }
+    .home .home-content .text-3{
+        font-size: 23px;
+    }
+    .navbar .menu li a{
+        font-size: 6px;
+    }
+    .home .home-content a{
+        font-size: 10px;
+    }
+}  
 
 
 
