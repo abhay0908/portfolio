@@ -298,19 +298,19 @@ section .title::after{
     top: 0;
     background: rgb(8, 61, 173);
 }
-.skills .skills-content .right .html::before{
-    width: 90%;
+.skills .skills-content .right .Front-end::before{
+    width: 70%;
 }
-.skills .skills-content .right .css::before{
-    width: 85%;
-}
-.skills .skills-content .right .js::before{
+.skills .skills-content .right .DataScience::before{
     width: 60%;
 }
 .skills .skills-content .right .python::before{
+    width: 70%;
+}
+.skills .skills-content .right .DataAnalyst::before{
     width: 75%;
 }
-.skills .skills-content .right .dsa::before{
+.skills .skills-content .right .C::before{
     width: 70%;
 }
 
