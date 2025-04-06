@@ -7,7 +7,8 @@
     <title>Kunwar Abhay Singh | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="arrow-btn">
@@ -23,6 +24,12 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="theme-toggle">
+                <i class="fa fa-moon-o"></i>
+            </div>
+            <div class="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
     </nav>
     <!-- Home Section -->
@@ -31,12 +38,11 @@
             <div class="home-content">
                 <div class="text-1">Hello, My name is</div>
                 <div class="text-2">Kunwar Abhay Singh</div>
-    
             </div>
         </div>
     </section>
 
-   <!-- about section start-->
+   <!-- About Section Start -->
    <section class="about" id="about">
         <div class="max-width">
             <h2 class="title">About Me</h2>
@@ -45,37 +51,69 @@
                     <img src="Abhay.jpg" alt="img">
                 </div>
                 <div class="column right">
-                    <p>Well, My name is KUNWAR ABHAY SINGH. I am  <b>B.tech CSE Graduate.</b> I am highly Motivated and Enthusiast about my work and skills which I'm learning... </p>
+                    <p>Hello! I'm <b>Kunwar Abhay Singh</b>, a B.Tech CSE Graduate with a passion for technology and innovation. I'm currently diving deep into <b>Data Science</b>, <b>Python</b>, and <b>Web Technologies</b>. I'm particularly interested in building cool stuff with <b>Django + Data Science</b> and continuously learning about <b>ML</b>, <b>SQL</b>, <b>REST APIs</b>, and more. When I'm not coding, you might find me binge-watching movies (except horror! 👻).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work section start-->
+    <!-- Work Section Start -->
     <section class="work" id="work">
         <div class="max-width">
             <h2 class="title">My Work</h2>
             <div class="work-content">
                 <div class="card">
                     <div class="box">
-                        <div class="text">Frontend Developer</div>
-                        <p>While web design is the way a website looks, front-end development is how that design actually gets implemented on the web. A front-end web developer is a person who implements web designs through coding languages like HTML, CSS, and JavaScript.</p>
+                        <div class="text">Data Science Intern</div>
+                        <p>Worked on machine learning projects focusing on data analysis and predictive modeling. Developed skills in Python, SQL, and data visualization tools.</p>
+                        <div class="project-links">
+                            <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><i class="fa fa-linkedin"></i> View Experience</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <div class="text">AI/ML </div>
-                        <p> AI (Artificial Intelligence) and ML (Machine Learning) are two closely related terms that refer to the use of technology and algorithms to enable computers to perform tasks that normally require human intelligence.
-
-                            AI is a broad field that encompasses a range of technologies, including ML, natural language processing (NLP), computer vision, robotics, and more. AI is concerned with developing intelligent agents or systems that can reason, learn, and act autonomously.
-                            
-                            ML, on the other hand, is a specific technique within AI that involves training algorithms to learn from data. In ML, a computer program is trained on a set of data, and it uses that training to make predictions or decisions about new data. ML algorithms can be categorized into supervised learning, unsupervised learning, and reinforcement learning.</p>
+                        <div class="text">Student Management System</div>
+                        <p>A full-stack Django application with user authentication, student records management, and an intuitive dashboard. Features include CRUD operations, role-based access control, and data analytics.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
-                        <div class="text">Data Analyst</div>
-                        <p>In the data-driven world of today, a Data Analyst's presence on LinkedIn is a critical component of their professional persona. It's not just about listing your technical skills; it's about painting a picture of how you turn raw data into actionable insights that drive business success. To differentiate yourself from the multitude, your LinkedIn profile should be a testament to your analytical prowess, your knack for interpreting trends, and your ability to communicate complex data in a compelling way. This guide will equip you with the strategies to sculpt a LinkedIn profile that not only showcases your expertise in data analysis but also positions you as a thought leader who can influence decision-making and shape the future of data-driven strategies.</p>
+                        <div class="text">E-learning Platform</div>
+                        <p>Built a comprehensive learning management system with course creation, student enrollments, and interactive dashboard. Implemented features like video streaming, progress tracking, and assessment tools.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <div class="text">Eyesight Saviour</div>
+                        <p>Developed a deep learning-based system for detecting diabetic retinopathy using computer vision techniques. Implemented using Python, TensorFlow, and OpenCV with a focus on medical image processing.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <div class="text">Rainfall Prediction</div>
+                        <p>Created a machine learning model to predict rainfall patterns using historical weather data. Utilized various ML algorithms and data preprocessing techniques to improve prediction accuracy.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <div class="text">Web Development Projects</div>
+                        <p>Developed multiple web applications using modern technologies. Experience with frontend frameworks, REST APIs, and database management. Focus on creating responsive and user-friendly interfaces.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View Projects</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,45 +127,57 @@
             <div class="skills-content">
                 <div class="column left">
                     <div class="text">My creative skills & experiences.</div>
-                    <p>As up till now I've skilled up myself in <b> Data Structures and Algorithms</b>,<b>Digital marketing</b>,<b>Web Development</b> by practicing on diffrent online platforms but I've a keen interest of learning <b>Artificial Intellegence</b>, <b>Machine Learning </b> <b>Cloud Computing</b></p>
-    
+                    <p>I'm passionate about technology and continuously expanding my skill set. Currently focusing on <b>Data Science</b>, <b>Python Development</b>, and <b>Web Technologies</b>. I have experience with <b>Django</b>, <b>SQL</b>, <b>REST APIs</b>, and various data analysis tools. Always eager to learn new technologies and solve complex problems.</p>
                 </div>
                 <div class="column right">
                     <div class="bars">
                         <div class="info">
-                            <span>Front-end</span>
-                            <span>70%</span>
+                            <span>Python</span>
+                            <span>85%</span>
                         </div>
-                        <div class="line front-end"></div>
+                        <div class="line python" style="--skill-percent: 85%"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Django</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="line django" style="--skill-percent: 80%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>Data Science</span>
-                            <span>60%</span>
+                            <span>75%</span>
                         </div>
-                        <div class="line Data Science"></div>
+                        <div class="line data-science" style="--skill-percent: 75%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>Python</span>
+                            <span>SQL</span>
                             <span>70%</span>
                         </div>
-                        <div class="line Python"></div>
+                        <div class="line sql" style="--skill-percent: 70%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>Data Analyst</span>
+                            <span>Web Development</span>
                             <span>75%</span>
                         </div>
-                        <div class="line Data Analyst"></div>
+                        <div class="line web-dev" style="--skill-percent: 75%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>C++</span>
-                            <span>75%</span>
+                            <span>Machine Learning</span>
+                            <span>70%</span>
                         </div>
-                        <div class="line C# "></div>
-                       
+                        <div class="line ml" style="--skill-percent: 70%"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>REST APIs</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="line api" style="--skill-percent: 65%"></div>
                     </div>
                 </div>
             </div>
@@ -141,7 +191,7 @@
             <div class="contact-content">
                 <div class="column left">
                     <div class="text">Get in Touch</div>
-                    <p>Here, I've mentioned my name with address and contact number which is permanently active in a day you can call whenever you need any help. If you have any suggestions or problems you can mail them, soon the reply will be given.</p>
+                    <p>I've provided my contact information below. Feel free to reach out if you have any questions, suggestions, or would like to collaborate on a project. I'll respond as soon as possible.</p>
                     <div class="icons">
                         <div class="row">
                             <i class="fa fa-user"></i>
@@ -180,7 +230,7 @@
     <!-- Footer Section -->
     <footer>
         <div class="footer container">
-            <h1>Thankyou for Visit</h1>
+            <h1>Thank you for visiting</h1>
             <h2>Let's also get connected on</h2>
             <div class="social-icon">
                 <div class="social-item">
@@ -193,9 +243,8 @@
                     <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><img src="https://img.icons8.com/windows/32/000000/linkedin.png"/></a>
                 </div>
             </div>
-            <p>Created By : Kunwar Abhay Singh || Copyright 2021 All rights reserved.</p>
+            <p>Created By: Kunwar Abhay Singh || Copyright © 2021. All rights reserved.</p>
         </div>
     </footer>  
-
-</script></body>
+</body>
 </html>

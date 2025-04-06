@@ -1,105 +1,216 @@
+/* 
+ * Portfolio Website Styles
+ * Author: Kunwar Abhay Singh
+ * Description: Main stylesheet for personal portfolio website
+ */
 
+/* Reset default styles */
 *{
     margin: 0;
     padding:  0;
     box-sizing: border-box;
     text-decoration: none;
 }
+
+/* Container for content with max width */
 .max-width{
     max-width: 1300px;
     padding: 0 80px;
     margin: auto;
 }
-/* Navbar Styling */
+
+/* Color Variables - Global theme colors */
+:root {
+    /* Light theme (default) */
+    --primary-color: #2d3436;    /* Dark slate for main elements */
+    --secondary-color: #0984e3;  /* Bright blue for accents */
+    --accent-color: #00b894;     /* Teal for hover states */
+    --text-light: #ffffff;       /* Pure white for light text */
+    --text-dark: #2d3436;        /* Dark slate for dark text */
+    --background-light: #f5f6fa; /* Light gray for light backgrounds */
+    --background-dark: #2d3436;  /* Dark slate for dark backgrounds */
+    --card-bg: #353b48;          /* Slightly lighter slate for cards */
+    --hover-color: #00a8ff;      /* Bright blue for hover states */
+    --gradient-start: #0984e3;   /* Start of gradient */
+    --gradient-end: #00b894;     /* End of gradient */
+    --section-bg: #f5f6fa;       /* Light background for sections */
+    --section-text: #2d3436;     /* Dark text for sections */
+    --border-color: rgba(0, 0, 0, 0.1); /* Light borders */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadows */
+    --input-bg: #ffffff;         /* White input backgrounds */
+    --input-text: #2d3436;       /* Dark input text */
+    --input-border: #dfe6e9;     /* Light input borders */
+    --footer-bg: #2d3436;        /* Dark footer background */
+    --footer-text: #ffffff;      /* Light footer text */
+    --link-color: #0984e3;       /* Blue links */
+    --link-hover: #00a8ff;       /* Lighter blue on hover */
+    --skill-bg: #dfe6e9;         /* Light skill bar background */
+    --skill-fill: #0984e3;       /* Blue skill bar fill */
+    --about-img-border: #dfe6e9; /* Light image border */
+    --contact-icon: #0984e3;     /* Blue contact icons */
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --primary-color: #1e272e;    /* Darker slate */
+    --secondary-color: #00a8ff;  /* Brighter blue */
+    --accent-color: #00d2d3;     /* Brighter teal */
+    --text-light: #f5f6fa;       /* Light gray for text */
+    --text-dark: #dfe6e9;        /* Lighter slate for dark text */
+    --background-light: #2f3640; /* Dark gray for light backgrounds */
+    --background-dark: #1e272e;  /* Darker slate for dark backgrounds */
+    --card-bg: #353b48;          /* Slightly lighter slate for cards */
+    --hover-color: #00a8ff;      /* Bright blue for hover states */
+    --gradient-start: #00a8ff;   /* Start of gradient */
+    --gradient-end: #00d2d3;     /* End of gradient */
+    --section-bg: #2f3640;       /* Dark background for sections */
+    --section-text: #f5f6fa;     /* Light text for sections */
+    --border-color: rgba(255, 255, 255, 0.1); /* Dark borders */
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Dark shadows */
+    --input-bg: #353b48;         /* Dark input backgrounds */
+    --input-text: #f5f6fa;       /* Light input text */
+    --input-border: #2f3640;     /* Dark input borders */
+    --footer-bg: #1e272e;        /* Darker footer background */
+    --footer-text: #f5f6fa;      /* Light footer text */
+    --link-color: #00a8ff;       /* Bright blue links */
+    --link-hover: #00d2d3;       /* Teal on hover */
+    --skill-bg: #353b48;         /* Dark skill bar background */
+    --skill-fill: #00a8ff;       /* Bright blue skill bar fill */
+    --about-img-border: #353b48; /* Dark image border */
+    --contact-icon: #00a8ff;     /* Bright blue contact icons */
+}
+
+/* Apply theme colors to all elements */
+body {
+    background-color: var(--section-bg);
+    color: var(--section-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar Styling - Fixed navigation at top */
 .navbar{
     position: fixed;
     width: 100%;
     z-index: 999;
     padding: 13px 0;
-    background: rgb(41, 102, 235);
+    background: var(--primary-color);
     font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 2px 10px var(--shadow-color);
 }
+
+/* Navbar container layout */
 .navbar .max-width{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+/* Logo styling */
 .navbar .logo a{
-    color: #fff;
+    color: var(--text-light);
     font-size: 35px;
     font-weight: 600;
 }
+
+/* Logo accent color */
 .navbar .logo a span{
-    color:black;
+    color: var(--secondary-color);
 }
+
+/* Navigation menu items */
 .navbar .menu li{
     list-style: none;
     display: inline-block;
 }
+
+/* Navigation links */
 .navbar .menu li a{
-    color: #fff;
+    color: var(--text-light);
     font-size: 20px;
     font-weight: 600;
     margin-left: 25px;
     transition: color 0.3s ease;
 }
+
+/* Navigation link hover effect */
 .navbar .menu li a:hover{
-    color: black;
+    color: var(--secondary-color);
     text-decoration: underline;
 }
+
+/* Smooth scrolling behavior */
 html{
     scroll-behavior: smooth;
 }
+
+/* Back to top button */
 .arrow-btn{
     position: fixed;
     bottom: 30px;
     right: 30px;
     z-index: 9;    
 }
+
+/* Back to top button styling */
 .arrow-btn a{
     height: 39px;
     width: 37px;
     text-align: center;
-    background: rgb(20, 67, 220);
+    background: var(--secondary-color);
     display: block;
     border-radius: 3px;      
 }
+
+/* Back to top icon */
 .arrow-btn a span{
     color: #fff;
     line-height: 39px;
     font-size: 25px;
 }
 
-/* Home section Styling */
+/* Back to top button hover effect */
+.arrow-btn a:hover {
+    background: var(--hover-color);
+}
+
+/* Home section - Hero area */
 .home{
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1562813733-b31f71025d54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2849&q=80") no-repeat center;
+    background: linear-gradient(rgba(45, 52, 54, 0.9), rgba(45, 52, 54, 0.9)), url("https://images.unsplash.com/photo-1562813733-b31f71025d54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2849&q=80") no-repeat center;
     background-size: cover;  
     display: flex;
     height: 100vh;
-    color: #fff;
+    color: var(--text-light);
     min-height: 500px;
     font-family: 'Ubuntu', sans-serif;
 }
+
+/* Home content positioning */
 .home .max-width{
     margin: auto 0 auto 40px;
 }
+
+/* Home section text styling */
 .home .home-content .text-1{
     font-size: 27px;
 }
+
 .home .home-content .text-2{
     font-size: 75px;
     font-weight: 600;
     margin-left: -3px;
 }
 
-
-/* all similar content styling code */
+/* Common section styling */
 section{
     padding: 100px 0;
 }
+
+/* Font family for specific sections */
 .about, .work, .skills, .contact, .footer{
     font-family: 'Poppins', sans-serif;
 }
+
+/* Flex layout for content sections */
 .about .about-content,
 .work .work-content,
 .skills .skills-content,
@@ -109,6 +220,8 @@ section{
     align-items: center;
     justify-content: space-between;
 }
+
+/* Section title styling */
 section .title{
     position: relative;
     text-align: center;
@@ -118,6 +231,8 @@ section .title{
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
+
+/* Section title underline */
 section .title::before{
     content: "";
     position: absolute;
@@ -125,24 +240,29 @@ section .title::before{
     left: 50%;
     width: 180px;
     height: 3px;
-    background: rgb(7, 1, 1);
+    background: var(--secondary-color);
     transform: translateX(-50%);
 }
+
+/* Section title subtitle */
 section .title::after{
     position: absolute;
     bottom: -12px;
     font-size: 20px;
     left: 50%;
     padding: 5px;
-    color: rgb(20, 83, 220);
-    background: #fff;
+    color: var(--secondary-color);
+    background: var(--section-bg);
     transform: translateX(-50%);
 }
 
 /* About Section Styling */
 .about, .work{
-    font-family: 'Poppins', sans-serif;
+    background-color: var(--section-bg);
+    color: var(--section-text);
 }
+
+/* About section title */
 .about .title{
     position: relative;
     text-align: center;
@@ -152,6 +272,8 @@ section .title::after{
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
+
+/* About section title underline */
 .about .title::before{
     content: "";
     position: absolute;
@@ -159,136 +281,336 @@ section .title::after{
     left: 50%;
     width: 180px;
     height: 3px;
-    background: #111;
+    background: var(--secondary-color);
     transform: translateX(-50%);
 }
 
+/* About section subtitle */
 .about .title::after{
     content: 'who I am';
 }
+
+/* About section left column - Image */
 .about .about-content .left{
     width: 45%;
 }
+
+/* About section image styling */
 .about .about-content .left img{
     height: 300px;
     width: 350px;
     object-fit: cover;
     border-radius: 50px;
+    border: 3px solid var(--about-img-border);
 }
+
+/* About section right column - Text */
 .about .about-content .right{
     width: 55%;
 }
+
+/* About section heading */
 .about .about-content .right .text{
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+/* About section accent text */
 .about .about-content .right .text span{
-    color: rgb(20, 83, 220);
+    color: var(--secondary-color);
 }
+
+/* About section paragraph */
 .about .about-content .right p{
     text-align: justify;
 }
+
+/* About section button */
 .about .about-content .right a{
     display: inline-block;
-    background: rgb(20, 90, 220);
-    color: #fff;
+    background: var(--secondary-color);
+    color: var(--text-light);
     font-size: 20px;
     padding:  8px 30px;
     margin-top: 20px;
     border-radius: 5px;
-    border: 2px solid rgb(36, 88, 233);
+    border: 2px solid var(--secondary-color);
     transition: all 0.3s ease;
-}
-.about .about-content .right a:hover{
-    color: rgb(20, 83, 220);
-    background: none;
 }
 
-/* Work Section Start */
-.work{
-    color: #fff;
-    background: #111;
+/* About section button hover */
+.about .about-content .right a:hover{
+    color: var(--secondary-color);
+    background: transparent;
 }
-.work .title::before{
-    background: #fff;
+
+/* Work Section Start - Projects showcase */
+.work {
+    color: var(--text-light);
+    background: var(--background-dark);
+    position: relative;
+    overflow: hidden;
 }
-.work .title::after{
-    background: #111;
+
+/* Work section background overlay */
+.work::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+    z-index: 1;
+}
+
+/* Work section content positioning */
+.work .max-width {
+    position: relative;
+    z-index: 2;
+}
+
+/* Work section title spacing */
+.work .title {
+    margin-bottom: 80px;
+}
+
+/* Work section title underline */
+.work .title::before {
+    background: var(--text-light);
+    width: 200px;
+}
+
+/* Work section subtitle */
+.work .title::after {
+    background: var(--background-dark);
     content: 'what I do';
-}
-.work .work-content .card{
-    width: calc(33% - 20px);
-    background: #222;
-    text-align: center;
-    border-radius: 6px;
-    padding: 20px 25px;
-    cursor: pointer;
-}
-.work .work-content .card:hover{
-    background: gray;
-}
-.work .work-content .card .box{
-    transition: all 0.3s ease;
-}
-.work .work-content .card:hover .box{
-    transform: scale(1.05);
-}
-.work .work-content .card .text{
-    font-size: 25px;
+    padding: 0 20px;
     font-weight: 600;
-    margin: 10px 0 7px 0;
+    letter-spacing: 1px;
 }
+
+/* Work section grid layout */
+.work .work-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Project card styling */
+.work .work-content .card {
+    width: 100%;
+    margin: 0;
+    background: var(--card-bg);
+    text-align: center;
+    border-radius: 12px;
+    padding: 30px 25px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 20px var(--shadow-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Project card top border animation */
+.work .work-content .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+/* Project card top border animation on hover */
+.work .work-content .card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Project card hover effect */
+.work .work-content .card:hover {
+    background: var(--hover-color);
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+/* Project card content */
+.work .work-content .card .box {
+    transition: all 0.4s ease;
+    padding: 20px;
+}
+
+/* Project card title */
+.work .work-content .card .text {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 15px 0;
+    color: var(--text-light);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Project card title underline */
+.work .work-content .card .text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+/* Project card title underline animation on hover */
+.work .work-content .card:hover .text::after {
+    width: 100px;
+}
+
+/* Project card description */
+.work .work-content .card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Project links container */
+.work .work-content .card .project-links {
+    margin-top: 25px;
+}
+
+/* Project link button */
+.work .work-content .card .project-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 25px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+/* Project link button hover effect */
+.work .work-content .card .project-links a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Project link icon */
+.work .work-content .card .project-links i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* Card fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to cards */
+.work .work-content .card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Staggered animation delays for cards */
+.work .work-content .card:nth-child(1) { animation-delay: 0.1s; }
+.work .work-content .card:nth-child(2) { animation-delay: 0.2s; }
+.work .work-content .card:nth-child(3) { animation-delay: 0.3s; }
+.work .work-content .card:nth-child(4) { animation-delay: 0.4s; }
+.work .work-content .card:nth-child(5) { animation-delay: 0.5s; }
+.work .work-content .card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Skills Section Styling */
 .skills .title::after{
     content: 'what I know';
 }
+
+/* Skills content layout */
 .skills .skills-content .column{
     width: calc(50% - 30px);
 }
+
+/* Skills section heading */
 .skills .skills-content .left .text{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+/* Skills section paragraph */
 .skills .skills-content .left p{
     text-align: justify;
 }
+
+/* Skills section button */
 .skills .skills-content .left a{
     display: inline-block;
-    background: rgb(12, 150, 204);
-    color: #fff;
+    background: var(--secondary-color);
+    color: var(--text-light);
     font-size: 18px;
     padding:  8px 16px;
     margin-top: 20px;
     border-radius: 5px;
-    border: 2px solid rgb(57, 20, 220);
+    border: 2px solid var(--secondary-color);
     transition: all 0.3s ease;
 }
+
+/* Skills section button hover */
 .skills .skills-content .left a:hover{
-    color: rgb(57, 20, 220);
-    background: none;
+    color: var(--secondary-color);
+    background: transparent;
 }
+
+/* Skill bars container */
 .skills .skills-content .right .bars{
     margin-bottom: 15px;
 }
+
+/* Skill bar info (name and percentage) */
 .skills .skills-content .right .info{
     display: flex;
     margin-bottom: 5px;
     align-items: center;
     justify-content: space-between;
 }
+
+/* Skill name and percentage text */
 .skills .skills-content .right span{
     font-size: 18px;
     font-weight: 500;
 }
+
+/* Skill bar background */
 .skills .skills-content .right .line{
     height: 5px;
     width: 100%;
-    background: lightgray;
+    background: var(--skill-bg);
     position: relative;
 }
+
+/* Skill bar fill */
 .skills .skills-content .right .line::before{
     content: '';
     position: absolute;
@@ -296,48 +618,103 @@ section .title::after{
     width: 80%;
     left: 0;
     top: 0;
-    background: rgb(8, 61, 173);
+    background: var(--skill-fill);
 }
+
+/* Individual skill percentages */
 .skills .skills-content .right .Front-end::before{
     width: 70%;
 }
+
 .skills .skills-content .right .DataScience::before{
     width: 60%;
 }
+
 .skills .skills-content .right .python::before{
     width: 70%;
 }
+
 .skills .skills-content .right .DataAnalyst::before{
     width: 75%;
 }
+
 .skills .skills-content .right .C::before{
     width: 70%;
 }
 
+/* Updated skill bars with new percentages */
+.skills .skills-content .right .line.python::before {
+    width: 85%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.django::before {
+    width: 80%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.data-science::before {
+    width: 75%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.sql::before {
+    width: 70%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.web-dev::before {
+    width: 75%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.ml::before {
+    width: 70%;
+    background: var(--secondary-color);
+}
+
+.skills .skills-content .right .line.api::before {
+    width: 65%;
+    background: var(--secondary-color);
+}
+
 /* Contact section Styling */
 .contact{
-    background: #111;
-    color: #fff;
+    background: var(--background-dark);
+    color: var(--text-light);
 }
+
+/* Contact section title underline */
 .contact .title::before{
-    background: #fff;
+    background: var(--text-light);
 }
+
+/* Contact section subtitle */
 .contact .title::after{
     content: 'get in touch';
-    background: #111;
+    background: var(--background-dark);
+    color: var(--secondary-color);
 }
+
+/* Contact section heading */
 .contact .contact-content .text{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+/* Contact section paragraph */
 .contact .contact-content .left p{
     text-align: justify;
     margin-bottom: 30px;
 }
+
+/* Contact icons container */
 .contact .contact-content .left .icons{
     margin: 10px 0;
 }
+
+/* Contact info row */
 .contact .contact-content .row{
     display: flex;
     height: 55px;
@@ -345,34 +722,44 @@ section .title::after{
     margin-left: 60px;
     margin-bottom: 20px;
 }
+
+/* Contact icon */
 .contact .contact-content .row i{
     font-size: 20px;
-    color: rgb(19, 118, 199);
+    color: var(--contact-icon);
     margin: 20px;
 }
+
+/* Contact info heading */
 .contact .contact-content .info .head{
     font-weight: 600;
     margin-left: 10px;
 }
+
+/* Contact info text */
 .contact .contact-content .info .sub-title{
     font-weight: 400;
-    color: #fff;
+    color: var(--text-light);
     margin-left: 10px;
 }
 
 /* Footer Section Styling */
 footer{
-    background: rgb(20, 113, 220);
+    background: var(--footer-bg);
     flex-direction: column;
     padding-top: 25px;
     padding-bottom: 5px;
     text-align: center;
-    color: #fff;
+    color: var(--footer-text);
 }
+
+/* Footer heading */
 footer h1{
     letter-spacing: .5rem;
     font-weight: 600;
 }
+
+/* Footer subheading */
 footer h2{
     font-size: 1.1rem;
     font-weight: 500;
@@ -380,22 +767,29 @@ footer h2{
     margin-top: 3px;
     margin-bottom: 15px;
 }
+
+/* Social icons container */
 footer .social-icon{
     display: inline-flex;
     margin-bottom: 10px;
     text-align: center;
-    color: #fff;
+    color: var(--text-light);
 }
+
+/* Social icon item */
 footer .social-item{
     height: 40px;
     width: 40px;
     margin: 0 5px;
 }
+
+/* Footer paragraph */
 footer p{
     text-decoration: none;
     font-weight: 500;
 }
   
+/* Responsive styles for small screens */
 @media(max-width: 400px){
     .max-width{
         padding: 0 25px;
@@ -418,8 +812,9 @@ footer p{
     .home .home-content a{
         font-size: 13px;
     }
-
 } 
+
+/* Responsive styles for very small screens */
 @media(max-width: 370px){
     .max-width{
         padding: 0 20px;
@@ -442,4 +837,526 @@ footer p{
     .home .home-content a{
         font-size: 10px;
     }
+}
+
+/* Responsive Media Queries */
+/* Large screens */
+@media (max-width: 1200px) {
+    .max-width {
+        padding: 0 50px;
+    }
+    .work .work-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium screens */
+@media (max-width: 991px) {
+    .max-width {
+        padding: 0 30px;
+    }
+    .home .home-content .text-2 {
+        font-size: 60px;
+    }
+    .home .home-content .text-1 {
+        font-size: 22px;
+    }
+    .about .about-content .left img {
+        height: 300px;
+        width: 300px;
+    }
+    .work .work-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet screens */
+@media (max-width: 947px) {
+    /* Mobile menu button */
+    .menu-btn {
+        display: block;
+        z-index: 999;
+    }
+    
+    /* Mobile navigation menu */
+    .navbar .menu {
+        position: fixed;
+        height: 100vh;
+        left: -100%;
+        top: 0;
+        background: var(--primary-color);
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    /* Active mobile menu */
+    .navbar .menu.active {
+        left: 0;
+    }
+    
+    /* Mobile menu items */
+    .navbar .menu li {
+        display: block;
+    }
+    
+    /* Mobile menu links */
+    .navbar .menu li a {
+        display: inline-block;
+        margin: 20px 0;
+        font-size: 25px;
+    }
+    
+    /* Adjust home text for mobile */
+    .home .home-content .text-2 {
+        font-size: 50px;
+    }
+    .home .home-content .text-1 {
+        font-size: 20px;
+    }
+    
+    /* Adjust container width */
+    .max-width {
+        max-width: 800px;
+    }
+    
+    /* Stack about columns on mobile */
+    .about .about-content .column {
+        width: 100%;
+    }
+    .about .about-content .left {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+    .about .about-content .right {
+        flex: 100%;
+    }
+    
+    /* Adjust work cards for mobile */
+    .work .work-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Stack skills and contact columns on mobile */
+    .skills .skills-content .column,
+    .contact .contact-content .column {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 690px) {
+    .max-width {
+        padding: 0 20px;
+    }
+    .home .home-content .text-2 {
+        font-size: 42px;
+    }
+    .home .home-content .text-1 {
+        font-size: 18px;
+    }
+    .work .work-content .card {
+        width: 100%;
+    }
+    .section .title {
+        font-size: 35px;
+    }
+    .about .about-content .left img {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 500px) {
+    .home .home-content .text-2 {
+        font-size: 32px;
+    }
+    .home .home-content .text-1 {
+        font-size: 16px;
+    }
+    .about .about-content .right .text,
+    .skills .skills-content .left .text {
+        font-size: 19px;
+    }
+    .contact .contact-content .text {
+        font-size: 20px;
+    }
+    .section .title {
+        font-size: 30px;
+    }
+    .about .about-content .left img {
+        height: 200px;
+        width: 200px;
+    }
+    .work .work-content .card .text {
+        font-size: 24px;
+    }
+    .work .work-content .card p {
+        font-size: 14px;
+    }
+    .contact .contact-content .row {
+        margin-left: 20px;
+    }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 380px) {
+    .max-width {
+        padding: 0 15px;
+    }
+    .home .home-content .text-2 {
+        font-size: 28px;
+    }
+    .section .title {
+        font-size: 25px;
+    }
+    .about .about-content .left img {
+        height: 180px;
+        width: 180px;
+    }
+    .work .work-content .card .text {
+        font-size: 20px;
+    }
+    .work .work-content .card p {
+        font-size: 13px;
+    }
+    .contact .contact-content .row {
+        margin-left: 10px;
+    }
+}
+
+/* Landscape orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+    .home {
+        height: auto;
+        min-height: 100vh;
+    }
+    .home .home-content {
+        padding: 100px 0;
+    }
+    .navbar .menu {
+        padding-top: 60px;
+    }
+    .about .about-content .left img {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+/* High-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .home {
+        background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url("https://images.unsplash.com/photo-1562813733-b31f71025d54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2849&q=80");
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .arrow-btn,
+    .menu-btn,
+    .work .work-content .card .project-links {
+        display: none;
+    }
+    .home {
+        background: none;
+        color: var(--text-dark);
+    }
+    .work,
+    .contact {
+        background: none;
+        color: var(--text-dark);
+    }
+    .work .work-content .card {
+        border: 1px solid var(--text-dark);
+        box-shadow: none;
+    }
+    .work .work-content .card p {
+        color: var(--text-dark);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .work .work-content .card:hover {
+        transform: none;
+    }
+    .work .work-content .card .project-links a:hover {
+        transform: none;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Mobile menu button */
+.menu-btn {
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Smooth transitions for interactive elements */
+.work .work-content .card,
+.skills .skills-content .right .line::before,
+.navbar .menu li a,
+.about .about-content .right a,
+.contact .contact-content .row i {
+    transition: all 0.3s ease;
+}
+
+/* Card hover effects */
+.work .work-content .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Add styles for theme toggle */
+.theme-toggle {
+    color: var(--text-light);
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--secondary-color);
+}
+
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(360deg);
+}
+
+/* Add styles for contact form */
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form .fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contact-form .field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact-form .fields .field {
+    width: calc(50% - 15px);
+}
+
+.contact-form .field input,
+.contact-form .field textarea {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.2);
+}
+
+.contact-form .field textarea {
+    resize: none;
+    min-height: 150px;
+}
+
+.contact-form .button-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.contact-form .button-area button {
+    padding: 12px 30px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form .button-area button:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Add styles for fade-in animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add styles for skill bar animations */
+.skills .skills-content .right .line::before {
+    width: 0;
+    transition: width 1.5s ease;
+}
+
+.skills .skills-content .right .line.animate::before {
+    width: var(--skill-percent, 80%);
+}
+
+/* Add styles for sticky navbar */
+.navbar.sticky {
+    background: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Add styles for back to top button */
+.arrow-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.arrow-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Add styles for typing effect */
+.home .home-content .text-2 {
+    border-right: 2px solid var(--secondary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: var(--secondary-color) }
+}
+
+/* Update home section background */
+.home {
+    background: linear-gradient(rgba(45, 52, 54, 0.9), rgba(45, 52, 54, 0.9)), url("https://images.unsplash.com/photo-1562813733-b31f71025d54?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2849&q=80") no-repeat center;
+    background-size: cover;
+}
+
+/* Update work section background */
+.work::before {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95) 0%, rgba(53, 59, 72, 0.95) 100%);
+}
+
+/* Update project cards */
+.work .work-content .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.work .work-content .card:hover {
+    background: var(--hover-color);
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.work .work-content .card .project-links a {
+    background: var(--secondary-color);
+}
+
+.work .work-content .card .project-links a:hover {
+    background: var(--accent-color);
+}
+
+/* Update skill bars */
+.skills .skills-content .right .line::before {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+}
+
+/* Update contact section */
+.contact {
+    background: var(--background-dark);
+}
+
+/* Update footer */
+footer {
+    background: var(--footer-bg);
+}
+
+/* Add styles for mobile menu button */
+.menu-btn.active i::before {
+    content: "\f00d";
+}
+
+/* Contact form message styles */
+.form-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.form-message.success {
+    background-color: rgba(0, 184, 148, 0.1);
+    color: #00b894;
+    opacity: 1;
+}
+
+.form-message.error {
+    background-color: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    opacity: 1;
+}
+
+/* Update contact form button styles */
+.contact-form .button-area button:disabled {
+    background: var(--accent-color);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Theme transition */
+.theme-transition,
+.theme-transition *,
+.theme-transition *:before,
+.theme-transition *:after {
+    transition: all 0.3s ease !important;
 }
