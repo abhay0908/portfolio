@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
     initProjectCards();
     initContactForm();
     initThemeToggle();
+    initTypingEffect();
+    initAOS();
+    initTyped();
+    initFilterBtns();
+    initFormMessage();
+    initSkillBarsAnimation();
+    initArrowBtn();
+    initObserver();
+    initProjectCardHover();
+    initLoadedAnimation();
+    initFormInputAnimations();
+    initParallaxEffect();
+    initEmailJS();
 });
 
 /**
@@ -160,84 +173,53 @@ function initProjectCards() {
  * Displays success or error messages after form submission.
  */
 function initContactForm() {
-    // Add contact form if it doesn't exist
-    const contactContent = document.querySelector('.contact .contact-content');
-    if (contactContent && !document.querySelector('.contact-form')) {
-        const formHTML = `
-            <div class="column right contact-form">
-                <div class="text">Message me</div>
-                <form id="contactForm">
-                    <div class="fields">
-                        <div class="field name">
-                            <input type="text" name="name" placeholder="Name" required>
-                        </div>
-                        <div class="field email">
-                            <input type="email" name="email" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <input type="text" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="field textarea">
-                        <textarea name="message" cols="30" rows="10" placeholder="Message.." required></textarea>
-                    </div>
-                    <div class="button-area">
-                        <button type="submit">Send message</button>
-                    </div>
-                    <div id="formMessage" class="form-message"></div>
-                </form>
-            </div>
-        `;
-        
-        contactContent.insertAdjacentHTML('beforeend', formHTML);
-        
-        // Form submission handling
-        const form = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        
-        if (form) {
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Get form data
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            formMessage.textContent = '';
+            formMessage.className = 'form-message';
+            
+            try {
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
-                
-                // Show loading state
-                const submitButton = form.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.textContent;
-                submitButton.textContent = 'Sending...';
-                submitButton.disabled = true;
-                
-                try {
-                    // Here you would typically send the data to your server
-                    // For now, we'll simulate a successful submission
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // Show success message
-                    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
                     formMessage.className = 'form-message success';
                     form.reset();
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        submitButton.textContent = originalButtonText;
-                        submitButton.disabled = false;
-                        formMessage.textContent = '';
-                        formMessage.className = 'form-message';
-                    }, 3000);
-                    
-                } catch (error) {
-                    // Show error message
-                    formMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
-                    formMessage.className = 'form-message error';
-                    
-                    // Reset button
-                    submitButton.textContent = originalButtonText;
-                    submitButton.disabled = false;
+                } else {
+                    throw new Error('Failed to send message');
                 }
-            });
-        }
+            } catch (error) {
+                formMessage.textContent = 'Failed to send message. Please try again.';
+                formMessage.className = 'form-message error';
+            } finally {
+                // Reset button state
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+                
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.className = 'form-message';
+                }, 5000);
+            }
+        });
     }
 }
 
@@ -304,4 +286,203 @@ function initTypingEffect() {
 }
 
 // Initialize typing effect when the page loads
-window.addEventListener('load', initTypingEffect); 
+window.addEventListener('load', initTypingEffect);
+
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+});
+
+// Initialize Typed.js for typing effect
+const typed = new Typed('.typing', {
+    strings: ['Data Scientist', 'Python Developer', 'Web Developer', 'Machine Learning Engineer'],
+    typeSpeed: 100,
+    backSpeed: 60,
+    loop: true
+});
+
+// DOM Elements
+const navbar = document.querySelector('.navbar');
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+const themeToggle = document.querySelector('.theme-toggle');
+const arrowBtn = document.querySelector('.arrow-btn');
+const contactForm = document.getElementById('contactForm');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.card');
+
+// Navbar Scroll Effect
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+        navbar.classList.add('sticky');
+        arrowBtn.classList.add('active');
+    } else {
+        navbar.classList.remove('sticky');
+        arrowBtn.classList.remove('active');
+    }
+});
+
+// Mobile Menu Toggle
+menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+        menu.classList.remove('active');
+        menuBtn.classList.remove('active');
+    }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu after clicking a link
+            menu.classList.remove('active');
+            menuBtn.classList.remove('active');
+        }
+    });
+});
+
+// Theme Toggle
+themeToggle.addEventListener('click', () => {
+    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    themeToggle.querySelector('i').classList.toggle('fa-moon-o');
+    themeToggle.querySelector('i').classList.toggle('fa-sun-o');
+    localStorage.setItem('theme', document.body.dataset.theme);
+});
+
+// Load saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.body.dataset.theme = savedTheme;
+    themeToggle.querySelector('i').classList.toggle('fa-moon-o', savedTheme === 'light');
+    themeToggle.querySelector('i').classList.toggle('fa-sun-o', savedTheme === 'dark');
+}
+
+// Project Filtering
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        projectCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 200);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 200);
+            }
+        });
+    });
+});
+
+// Skill Bars Animation
+const skillBars = document.querySelectorAll('.line');
+const animateSkillBars = () => {
+    skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        const triggerBottom = window.innerHeight * 0.8;
+        
+        if (barTop < triggerBottom) {
+            bar.style.width = bar.dataset.percent;
+        }
+    });
+};
+
+window.addEventListener('scroll', animateSkillBars);
+window.addEventListener('load', animateSkillBars);
+
+// Back to Top Button
+arrowBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('[data-aos]').forEach(element => {
+    observer.observe(element);
+});
+
+// Add hover effect to project cards
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Handle form input animations
+const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+formInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', () => {
+        if (!input.value) {
+            input.parentElement.classList.remove('focused');
+        }
+    });
+});
+
+// Add parallax effect to home section
+window.addEventListener('scroll', () => {
+    const homeSection = document.querySelector('.home');
+    const scrollPosition = window.scrollY;
+    
+    if (homeSection) {
+        homeSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    }
+});
+
+// Initialize EmailJS
+(function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Add your EmailJS public key here
+})(); 

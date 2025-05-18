@@ -7,7 +7,11 @@
     <title>Kunwar Abhay Singh | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -20,6 +24,7 @@
             <ul class="menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -38,6 +43,16 @@
             <div class="home-content">
                 <div class="text-1">Hello, My name is</div>
                 <div class="text-2">Kunwar Abhay Singh</div>
+                <div class="text-3">I'm a <span class="typing"></span></div>
+                <div class="home-buttons">
+                    <a href="#contact" class="btn primary-btn">Hire Me</a>
+                    <a href="#work" class="btn secondary-btn">View My Work</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i></a>
+                    <a href="https://www.instagram.com/a_bhay_singh/" target="_blank"><i class="fa fa-instagram"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -47,11 +62,50 @@
         <div class="max-width">
             <h2 class="title">About Me</h2>
             <div class="about-content">
-                <div class="column left">
-                    <img src="Abhay.jpg" alt="img">
+                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="Abhay.jpg" alt="Kunwar Abhay Singh">
                 </div>
-                <div class="column right">
-                    <p>Hello! I'm <b>Kunwar Abhay Singh</b>, a B.Tech CSE Graduate with a passion for technology and innovation. I'm currently diving deep into <b>Data Science</b>, <b>Python</b>, and <b>Web Technologies</b>. I'm particularly interested in building cool stuff with <b>Django + Data Science</b> and continuously learning about <b>ML</b>, <b>SQL</b>, <b>REST APIs</b>, and more. When I'm not coding, you might find me binge-watching movies (except horror! 👻).</p>
+                <div class="column right" data-aos="fade-left" data-aos-duration="1000">
+                    <p>Hello! I'm <b>Kunwar Abhay Singh</b>, a passionate Data Scientist and Python Developer with a strong foundation in machine learning and web development. I specialize in building intelligent solutions using Python, Django, and modern data science tools. My expertise includes developing REST APIs, working with SQL databases, and implementing machine learning models for real-world applications. I'm currently pursuing my education at SRM University, where I'm actively involved in various tech communities and projects.</p>
+                    <div class="about-buttons">
+                        <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section Start -->
+    <section class="experience" id="experience">
+        <div class="max-width">
+            <h2 class="title">My Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">September 2024 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Freelance Data Scientist</h3>
+                        <h4>Upwork</h4>
+                        <p>Working as a freelance data scientist on various machine learning and data analysis projects. Developing solutions for clients across different industries using Python, SQL, and data visualization tools.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">April 2024 - June 2024</div>
+                    <div class="timeline-content">
+                        <h3>Data Science Intern</h3>
+                        <h4>EESI (Energy and Environmental Systems Institute)</h4>
+                        <p>Worked on environmental data analysis and modeling projects. Developed solutions for energy efficiency and sustainability using Python and data science tools. Collaborated with researchers on climate change impact analysis and renewable energy optimization.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>Core Team Member</h3>
+                        <h4>College Coding Team</h4>
+                        <p>Led and contributed to multiple web development projects as a core team member. Developed full-stack applications using Django, implemented RESTful APIs, and managed database systems. Mentored junior team members and conducted coding workshops. Successfully delivered projects including student management systems and event management platforms.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,58 +115,46 @@
     <section class="work" id="work">
         <div class="max-width">
             <h2 class="title">My Work</h2>
+            <div class="work-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="data-science">Data Science</button>
+                <button class="filter-btn" data-filter="web-dev">Web Development</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            </div>
             <div class="work-content">
-                <div class="card">
+                <div class="card" data-category="data-science" data-aos="fade-up" data-aos-duration="1000">
                     <div class="box">
-                        <div class="text">Data Science Intern</div>
-                        <p>Worked on machine learning projects focusing on data analysis and predictive modeling. Developed skills in Python, SQL, and data visualization tools.</p>
+                        <div class="text">Rainfall Prediction Using ML</div>
+                        <p>Developed a machine learning model to predict rainfall patterns using historical weather data. Implemented various ML algorithms and achieved improved prediction accuracy.</p>
                         <div class="project-links">
-                            <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><i class="fa fa-linkedin"></i> View Experience</a>
+                            <a href="https://github.com/abhay0908/Rainfall-Prediction-Using-ML" target="_blank"><i class="fa fa-github"></i> View Project</a>
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" data-category="web-dev" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                     <div class="box">
                         <div class="text">Student Management System</div>
-                        <p>A full-stack Django application with user authentication, student records management, and an intuitive dashboard. Features include CRUD operations, role-based access control, and data analytics.</p>
+                        <p>Built a full-stack Django application for managing student records, courses, and grades. Features include user authentication, CRUD operations, and a responsive dashboard.</p>
                         <div class="project-links">
-                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+                            <a href="https://github.com/abhay0908/Student-Management-System" target="_blank"><i class="fa fa-github"></i> View Project</a>
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" data-category="ml" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="box">
+                        <div class="text">Eyesight Saviour – Retinopathy Detection</div>
+                        <p>Developed a deep learning-based project for detecting diabetic retinopathy from retinal images. Implemented CNN models and achieved high accuracy in disease detection.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/abhay0908/Eyesight-Saviour" target="_blank"><i class="fa fa-github"></i> View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-category="web-dev" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                     <div class="box">
                         <div class="text">E-learning Platform</div>
-                        <p>Built a comprehensive learning management system with course creation, student enrollments, and interactive dashboard. Implemented features like video streaming, progress tracking, and assessment tools.</p>
+                        <p>Created a comprehensive e-learning platform with course creation, student enrollments, and progress tracking. Features include video lectures, quizzes, and a student dashboard.</p>
                         <div class="project-links">
-                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="text">Eyesight Saviour</div>
-                        <p>Developed a deep learning-based system for detecting diabetic retinopathy using computer vision techniques. Implemented using Python, TensorFlow, and OpenCV with a focus on medical image processing.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="text">Rainfall Prediction</div>
-                        <p>Created a machine learning model to predict rainfall patterns using historical weather data. Utilized various ML algorithms and data preprocessing techniques to improve prediction accuracy.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="text">Web Development Projects</div>
-                        <p>Developed multiple web applications using modern technologies. Experience with frontend frameworks, REST APIs, and database management. Focus on creating responsive and user-friendly interfaces.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i> View Projects</a>
+                            <a href="https://github.com/abhay0908/E-learning-Platform" target="_blank"><i class="fa fa-github"></i> View Project</a>
                         </div>
                     </div>
                 </div>
@@ -125,17 +167,24 @@
         <div class="max-width">
             <h2 class="title">My Skills</h2>
             <div class="skills-content">
-                <div class="column left">
-                    <div class="text">My creative skills & experiences.</div>
+                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="text">My technical expertise & experiences.</div>
                     <p>I'm passionate about technology and continuously expanding my skill set. Currently focusing on <b>Data Science</b>, <b>Python Development</b>, and <b>Web Technologies</b>. I have experience with <b>Django</b>, <b>SQL</b>, <b>REST APIs</b>, and various data analysis tools. Always eager to learn new technologies and solve complex problems.</p>
                 </div>
-                <div class="column right">
+                <div class="column right" data-aos="fade-left" data-aos-duration="1000">
                     <div class="bars">
                         <div class="info">
                             <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="line python" style="--skill-percent: 90%"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Data Science</span>
                             <span>85%</span>
                         </div>
-                        <div class="line python" style="--skill-percent: 85%"></div>
+                        <div class="line data-science" style="--skill-percent: 85%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
@@ -146,38 +195,24 @@
                     </div>
                     <div class="bars">
                         <div class="info">
-                            <span>Data Science</span>
+                            <span>Machine Learning</span>
                             <span>75%</span>
                         </div>
-                        <div class="line data-science" style="--skill-percent: 75%"></div>
+                        <div class="line ml" style="--skill-percent: 75%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>SQL</span>
-                            <span>70%</span>
+                            <span>80%</span>
                         </div>
-                        <div class="line sql" style="--skill-percent: 70%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Web Development</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="line web-dev" style="--skill-percent: 75%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Machine Learning</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="line ml" style="--skill-percent: 70%"></div>
+                        <div class="line sql" style="--skill-percent: 80%"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>REST APIs</span>
-                            <span>65%</span>
+                            <span>75%</span>
                         </div>
-                        <div class="line api" style="--skill-percent: 65%"></div>
+                        <div class="line api" style="--skill-percent: 75%"></div>
                     </div>
                 </div>
             </div>
@@ -189,7 +224,7 @@
         <div class="max-width">
             <h2 class="title">Contact me</h2>
             <div class="contact-content">
-                <div class="column left">
+                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
                     <div class="text">Get in Touch</div>
                     <p>I've provided my contact information below. Feel free to reach out if you have any questions, suggestions, or would like to collaborate on a project. I'll respond as soon as possible.</p>
                     <div class="icons">
@@ -223,6 +258,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="column right contact-form" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="text">Message me</div>
+                    <form id="contactForm" action="https://formspree.io/f/xqaqnokp" method="POST">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact!">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="field email">
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="field textarea">
+                            <textarea name="message" cols="30" rows="10" placeholder="Message.." required></textarea>
+                        </div>
+                        <div class="button-area">
+                            <button type="submit">Send message</button>
+                        </div>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
             </div> 
         </div>
     </section>
@@ -243,7 +302,7 @@
                     <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><img src="https://img.icons8.com/windows/32/000000/linkedin.png"/></a>
                 </div>
             </div>
-            <p>Created By: Kunwar Abhay Singh || Copyright © 2021. All rights reserved.</p>
+            <p>Created By: Kunwar Abhay Singh || Copyright © 2023. All rights reserved.</p>
         </div>
     </footer>  
 </body>
