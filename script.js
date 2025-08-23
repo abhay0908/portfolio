@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbar();
     initScrollAnimations();
     initSkillBars();
+    initSkillBarHover();
     initProjectCards();
     initContactForm();
-    initThemeToggle();
+    initContactAnimations();
+    initAboutAnimations();
+    initFooterAnimations();
+
     initTypingEffect();
     initAOS();
-    initTyped();
     initFilterBtns();
     initFormMessage();
     initSkillBarsAnimation();
@@ -128,17 +131,38 @@ function initSkillBars() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add animation class with delay for each bar
+                setTimeout(() => {
                 entry.target.classList.add('animate');
+                }, 200);
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.5
+        threshold: 0.3
     });
     
     // Observe all skill bars
-    skillBars.forEach(bar => {
+    skillBars.forEach((bar, index) => {
         observer.observe(bar);
+    });
+}
+
+/**
+ * Adds hover animations to skill bars
+ */
+function initSkillBarHover() {
+    const skillBars = document.querySelectorAll('.skills .skills-content .right .bars');
+    
+    skillBars.forEach(bar => {
+        bar.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        bar.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
     });
 }
 
@@ -177,6 +201,19 @@ function initContactForm() {
     const formMessage = document.getElementById('formMessage');
 
     if (form) {
+        // Add input focus animations
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.3s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -187,6 +224,9 @@ function initContactForm() {
             submitButton.disabled = true;
             formMessage.textContent = '';
             formMessage.className = 'form-message';
+            
+            // Add loading animation to button
+            submitButton.style.background = 'linear-gradient(135deg, var(--accent-color), var(--secondary-color))';
             
             try {
                 const formData = new FormData(form);
@@ -202,12 +242,24 @@ function initContactForm() {
                     formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
                     formMessage.className = 'form-message success';
                     form.reset();
+                    
+                    // Add success animation
+                    submitButton.style.background = 'linear-gradient(135deg, #00b894, #00a085)';
+                    setTimeout(() => {
+                        submitButton.style.background = 'linear-gradient(135deg, var(--secondary-color), var(--accent-color))';
+                    }, 2000);
                 } else {
                     throw new Error('Failed to send message');
                 }
             } catch (error) {
                 formMessage.textContent = 'Failed to send message. Please try again.';
                 formMessage.className = 'form-message error';
+                
+                // Add error animation
+                submitButton.style.background = 'linear-gradient(135deg, #ff4757, #ff3742)';
+                setTimeout(() => {
+                    submitButton.style.background = 'linear-gradient(135deg, var(--secondary-color), var(--accent-color))';
+                }, 2000);
             } finally {
                 // Reset button state
                 submitButton.textContent = originalButtonText;
@@ -224,69 +276,139 @@ function initContactForm() {
 }
 
 /**
- * Implements theme toggle functionality, allowing users to switch between
- * light and dark themes. Saves the user's preference in localStorage.
+ * Adds hover animations to contact info rows
  */
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
+function initContactAnimations() {
+    const contactRows = document.querySelectorAll('.contact .contact-content .row');
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-    
-    // Theme toggle click handler
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+    contactRows.forEach((row, index) => {
+        // Add staggered animation on page load
+        setTimeout(() => {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-20px)';
+            row.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                row.style.opacity = '1';
+                row.style.transform = 'translateX(0)';
+            }, 100);
+        }, index * 200);
     });
 }
 
 /**
- * Updates the theme toggle icon based on the current theme.
- * @param {string} theme - The current theme ('light' or 'dark')
+ * Adds animations to footer elements
  */
-function updateThemeIcon(theme) {
-    const themeIcon = document.querySelector('.theme-toggle i');
-    if (theme === 'dark') {
-        themeIcon.classList.remove('fa-moon-o');
-        themeIcon.classList.add('fa-sun-o');
-    } else {
-        themeIcon.classList.remove('fa-sun-o');
-        themeIcon.classList.add('fa-moon-o');
-    }
+function initFooterAnimations() {
+    const footerElements = document.querySelectorAll('footer h1, footer h2, footer .social-icon, footer p');
+    
+    // Add intersection observer for footer animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    footerElements.forEach(element => {
+        element.style.animationPlayState = 'paused';
+        observer.observe(element);
+    });
+    
+    // Add hover effects to social icons
+    const socialItems = document.querySelectorAll('footer .social-item');
+    socialItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+    });
 }
 
 /**
- * Creates a typing effect for the home section text,
- * simulating a typewriter typing out the text character by character.
+ * Adds animations to about section elements
  */
-function initTypingEffect() {
-    const textElement = document.querySelector('.home .home-content .text-2');
-    if (textElement) {
-        const text = textElement.textContent;
-        textElement.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                textElement.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+function initAboutAnimations() {
+    const aboutImage = document.querySelector('.about .about-content .left img');
+    const aboutText = document.querySelector('.about .about-content .right');
+    const aboutButton = document.querySelector('.about .about-content .right a');
+    
+    // Add intersection observer for about section animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target === aboutImage) {
+                    entry.target.style.animation = 'slideInLeft 1s ease forwards';
+                } else if (entry.target === aboutText) {
+                    entry.target.style.animation = 'slideInRight 1s ease forwards';
+                }
+                observer.unobserve(entry.target);
             }
-        };
-        
-        typeWriter();
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    if (aboutImage) {
+        aboutImage.style.opacity = '0';
+        aboutImage.style.transform = 'translateX(-50px)';
+        observer.observe(aboutImage);
+    }
+    
+    if (aboutText) {
+        aboutText.style.opacity = '0';
+        aboutText.style.transform = 'translateX(50px)';
+        observer.observe(aboutText);
+    }
+    
+    // Add button animation after text appears
+    if (aboutButton) {
+        setTimeout(() => {
+            aboutButton.style.animation = 'fadeInUp 0.8s ease forwards';
+        }, 1000);
     }
 }
 
-// Initialize typing effect when the page loads
-window.addEventListener('load', initTypingEffect);
+// Add CSS animations for about section
+const aboutAnimations = `
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+`;
+
+// Inject CSS animations
+const style = document.createElement('style');
+style.textContent = aboutAnimations;
+document.head.appendChild(style);
+
+
+
+// Name display is handled directly in HTML - no typing effect needed
 
 // Initialize AOS (Animate On Scroll)
 AOS.init({
@@ -297,17 +419,17 @@ AOS.init({
 
 // Initialize Typed.js for typing effect
 const typed = new Typed('.typing', {
-    strings: ['Data Scientist', 'Python Developer', 'Web Developer', 'Machine Learning Engineer'],
+    strings: ['Software Engineer'],
     typeSpeed: 100,
     backSpeed: 60,
-    loop: true
+    loop: false
 });
 
 // DOM Elements
 const navbar = document.querySelector('.navbar');
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
-const themeToggle = document.querySelector('.theme-toggle');
+
 const arrowBtn = document.querySelector('.arrow-btn');
 const contactForm = document.getElementById('contactForm');
 const filterBtns = document.querySelectorAll('.filter-btn');
