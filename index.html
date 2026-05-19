@@ -2,315 +2,524 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kunwar Abhay Singh | Portfolio</title>
+    <title>Kunwar Abhay Singh — Software Engineer</title>
+    <meta name="description" content="Portfolio of Kunwar Abhay Singh — Software Engineer specialising in full-stack development, ML, and scalable systems.">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="arrow-btn">
-        <a href="#"><span class="fa fa-angle-up"></span></a>
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"><span class="cursor-label" id="cursorLabel"></span></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Grain texture overlay -->
+    <div class="grain"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <span class="loader-text" style="--i:0">A</span>
+            <span class="loader-text" style="--i:1">b</span>
+            <span class="loader-text" style="--i:2">h</span>
+            <span class="loader-text" style="--i:3">a</span>
+            <span class="loader-text" style="--i:4">y</span>
+            <span class="loader-space"></span>
+            <span class="loader-text italic" style="--i:5">S</span>
+            <span class="loader-text italic" style="--i:6">i</span>
+            <span class="loader-text italic" style="--i:7">n</span>
+            <span class="loader-text italic" style="--i:8">g</span>
+            <span class="loader-text italic" style="--i:9">h</span>
+        </div>
+        <div class="loader-bar"><span></span></div>
     </div>
-    <nav class="navbar">
-        <div class="max-width">
-            <div class="logo"><a href="#">Port<span>folio.</span></a></div>
-            <ul class="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
 
-            <div class="menu-btn">
-                <i class="fa fa-bars"></i>
+    <!-- Nav -->
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <span class="logo-mark">Abhay <span class="italic">Singh</span></span>
+                <span class="logo-dot"></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about"><span class="num">01</span> About</a>
+                <a href="#experience"><span class="num">02</span> Work</a>
+                <a href="#projects"><span class="num">03</span> Projects</a>
+                <a href="#skills"><span class="num">04</span> Skills</a>
+                <a href="#contact"><span class="num">05</span> Contact</a>
+            </nav>
+            <div class="nav-meta">
+                <span class="status-pill"><span class="dot"></span> Available</span>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-hover="Theme">
+                    <span class="tt-icon tt-sun"><i class="fa-regular fa-sun"></i></span>
+                    <span class="tt-icon tt-moon"><i class="fa-regular fa-moon"></i></span>
+                </button>
+                <button class="menu-btn" id="menuBtn" aria-label="Menu">
+                    <span></span><span></span>
+                </button>
             </div>
         </div>
-    </nav>
-    <!-- Home Section -->
-    <section class="home" id="home">
-        <div class="max-width">
-            <div class="home-content">
-                <div class="text-1">Hello, My name is</div>
-                <div class="text-2">Kunwar Abhay Singh</div>
-                <div class="text-3">I'm a <span class="typing"></span></div>
-                <div class="home-buttons">
-                    <a href="#contact" class="btn primary-btn">Hire Me</a>
-                    <a href="#work" class="btn secondary-btn">View My Work</a>
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                    <a href="https://github.com/abhay0908" target="_blank"><i class="fa fa-github"></i></a>
-                    <a href="https://www.instagram.com/a_bhay_singh/" target="_blank"><i class="fa fa-instagram"></i></a>
+    </header>
+
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" data-num="01">About</a>
+        <a href="#experience" data-num="02">Work</a>
+        <a href="#projects" data-num="03">Projects</a>
+        <a href="#skills" data-num="04">Skills</a>
+        <a href="#contact" data-num="05">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-grid">
+            <div class="hero-meta-top">
+                <span class="meta-label">Portfolio / 2025</span>
+                <span class="meta-time" id="liveTime">—</span>
+            </div>
+
+            <div class="hero-headline">
+                <h1>
+                    <span class="line"><span class="word">Software</span></span>
+                    <span class="line">
+                        <span class="word rotator" aria-label="Engineer">
+                            <span class="rotator-track">
+                                <span class="rotator-item italic">Engineer.</span>
+                                <span class="rotator-item italic">Builder.</span>
+                                <span class="rotator-item italic">Tinkerer.</span>
+                                <span class="rotator-item italic">Engineer.</span>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="line"><span class="word">Building</span> <span class="word">useful</span></span>
+                    <span class="line"><span class="word italic">things,</span> <span class="word">on&nbsp;repeat.</span></span>
+                </h1>
+                <div class="hero-mark" aria-hidden="true">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <path id="circlePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+                        </defs>
+                        <text class="mark-text">
+                            <textPath href="#circlePath" startOffset="0">AVAILABLE FOR WORK  ·  PORTFOLIO 2025  ·  </textPath>
+                        </text>
+                        <circle cx="60" cy="60" r="5" class="mark-dot"/>
+                    </svg>
                 </div>
             </div>
-        </div>
-    </section>
 
-   <!-- About Section Start -->
-   <section class="about" id="about">
-        <div class="max-width">
-            <h2 class="title">About Me</h2>
-            <div class="about-content">
-                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
-                    <img src="Abhay.jpg" alt="Kunwar Abhay Singh">
+            <div class="hero-side">
+                <p class="hero-bio">
+                    I&rsquo;m <strong>Kunwar Abhay Singh</strong> — a software engineer based in Lucknow, India. I build full-stack systems, ship APIs, and train models that earn their keep.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary" data-hover="Hire">
+                        <span>Start a project</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-ghost" data-hover="View">
+                        <span>See selected work</span>
+                    </a>
                 </div>
-                <div class="column right" data-aos="fade-left" data-aos-duration="1000">
-                    <p>Hello! I'm <b>Kunwar Abhay Singh</b>, a passionate Software Engineer with expertise in building scalable applications and innovative solutions. I specialize in full-stack development, creating robust software systems, and implementing efficient algorithms. My technical skills include developing REST APIs, working with databases, and building modern web applications. I'm constantly exploring new technologies and solving complex problems to deliver high-quality software solutions.</p>
-                    <div class="about-buttons">
-                        <a href="#contact" class="btn secondary-btn">Contact Me</a>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-num"><span class="counter" data-target="3">0</span><span>+</span></div>
+                        <div class="stat-label">Years building</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num"><span class="counter" data-target="15">0</span><span>+</span></div>
+                        <div class="stat-label">Shipped projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">∞</div>
+                        <div class="stat-label">Cups of chai</div>
                     </div>
                 </div>
             </div>
+
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <span class="scroll-line"></span>
+            </div>
         </div>
     </section>
 
-    <!-- Experience Section Start -->
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Python</span><span class="dot-sep">●</span>
+            <span class="italic">Django</span><span class="dot-sep">●</span>
+            <span>Flask</span><span class="dot-sep">●</span>
+            <span class="italic">Machine&nbsp;Learning</span><span class="dot-sep">●</span>
+            <span>REST&nbsp;APIs</span><span class="dot-sep">●</span>
+            <span class="italic">SQL</span><span class="dot-sep">●</span>
+            <span>Full-Stack</span><span class="dot-sep">●</span>
+            <span class="italic">Data&nbsp;Analysis</span><span class="dot-sep">●</span>
+            <span>Python</span><span class="dot-sep">●</span>
+            <span class="italic">Django</span><span class="dot-sep">●</span>
+            <span>Flask</span><span class="dot-sep">●</span>
+            <span class="italic">Machine&nbsp;Learning</span><span class="dot-sep">●</span>
+            <span>REST&nbsp;APIs</span><span class="dot-sep">●</span>
+            <span class="italic">SQL</span><span class="dot-sep">●</span>
+            <span>Full-Stack</span><span class="dot-sep">●</span>
+            <span class="italic">Data&nbsp;Analysis</span><span class="dot-sep">●</span>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="section-head">
+            <span class="section-num">01 —</span>
+            <span class="section-label">About</span>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-portrait reveal">
+                <img src="Abhay.jpg" alt="Kunwar Abhay Singh">
+                <span class="portrait-tag">Lucknow, IN · 2025</span>
+            </div>
+
+            <div class="about-body">
+                <p class="about-lead reveal">
+                    Building software is about <em>making something tangible</em> out of fuzzy problems. I focus on engineering that compounds — clean APIs, models that don&rsquo;t lie, interfaces that respect attention.
+                </p>
+
+                <div class="about-cols">
+                    <div class="reveal">
+                        <h4>What I do</h4>
+                        <p>Full-stack engineering with Python, Django &amp; Flask. REST APIs, relational schema design, and ML pipelines from data to deploy.</p>
+                    </div>
+                    <div class="reveal">
+                        <h4>How I work</h4>
+                        <p>Ship small, measure honestly, iterate. Strong opinions on naming, weak opinions on tooling. Code reviews welcome.</p>
+                    </div>
+                </div>
+
+                <div class="about-cta reveal">
+                    <a href="#contact" class="link-arrow">
+                        Get in touch <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
     <section class="experience" id="experience">
-        <div class="max-width">
-            <h2 class="title">My Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">May 2025 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Software Engineer</h3>
-                        <h4>HashStudioz Technologies</h4>
-                        <p>Working as a full-time Software Engineer, focusing on Flask development and Object-Oriented Programming. Contributing to software development projects and implementing modern development practices.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">August 2024 - February 2025</div>
-                    <div class="timeline-content">
-                        <h3>Data Analyst</h3>
-                        <h4>Upwork</h4>
-                        <p>Worked as a freelance Data Analyst, collaborating with clients to deliver actionable insights through data analysis. Created compelling dashboards to provide the best business solutions and organized data to create efficient database systems.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">April 2024 - June 2024</div>
-                    <div class="timeline-content">
-                        <h3>Machine Learning Intern</h3>
-                        <h4>Environmental and Energy Study Institute (EESI)</h4>
-                        <p>Worked as a Machine Learning Intern, focusing on environmental data analysis and modeling projects. Developed solutions for energy efficiency and sustainability using machine learning techniques and data science tools.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2021 - 2023</div>
-                    <div class="timeline-content">
-                        <h3>Core Team Member</h3>
-                        <h4>College Coding Team</h4>
-                        <p>Led and contributed to multiple web development projects as a core team member. Developed full-stack applications using Django, implemented RESTful APIs, and managed database systems. Mentored junior team members and conducted coding workshops. Successfully delivered projects including student management systems and event management platforms.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="section-head">
+            <span class="section-num">02 —</span>
+            <span class="section-label">Experience</span>
         </div>
+
+        <h2 class="section-title reveal">A short <span class="italic">chronology</span>.</h2>
+
+        <ul class="exp-list">
+            <li class="exp-item reveal">
+                <span class="exp-year">2025 →</span>
+                <div class="exp-meta">
+                    <h3>Software Engineer</h3>
+                    <span class="exp-company">HashStudioz Technologies</span>
+                </div>
+                <p class="exp-desc">Building Flask-based services and OOP systems for production. Day-to-day: APIs, code review, and shipping features that survive contact with real users.</p>
+                <span class="exp-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+            </li>
+
+            <li class="exp-item reveal">
+                <span class="exp-year">2024 / 25</span>
+                <div class="exp-meta">
+                    <h3>Data Analyst — Freelance</h3>
+                    <span class="exp-company">Upwork</span>
+                </div>
+                <p class="exp-desc">Delivered dashboards and structured data systems for international clients. Turned spreadsheets into decisions; turned chaos into queries.</p>
+                <span class="exp-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+            </li>
+
+            <li class="exp-item reveal">
+                <span class="exp-year">2024</span>
+                <div class="exp-meta">
+                    <h3>Machine Learning Intern</h3>
+                    <span class="exp-company">Environmental and Energy Study Institute</span>
+                </div>
+                <p class="exp-desc">Worked on environmental data modelling for energy efficiency. ML applied to problems with actual stakes — climate, not click-through.</p>
+                <span class="exp-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+            </li>
+
+            <li class="exp-item reveal">
+                <span class="exp-year">2021 / 23</span>
+                <div class="exp-meta">
+                    <h3>Core Team — Coding Club</h3>
+                    <span class="exp-company">College</span>
+                </div>
+                <p class="exp-desc">Led Django builds, ran workshops, mentored juniors. Shipped student-management and event platforms used by real cohorts.</p>
+                <span class="exp-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+            </li>
+        </ul>
     </section>
 
-    <!-- Work Section Start -->
-    <section class="work" id="work">
-        <div class="max-width">
-            <h2 class="title">My Work</h2>
-            <div class="work-filter">
+    <!-- Projects -->
+    <section class="projects" id="projects">
+        <div class="section-head">
+            <span class="section-num">03 —</span>
+            <span class="section-label">Selected Work</span>
+        </div>
+
+        <div class="projects-header">
+            <h2 class="section-title reveal">Things I&rsquo;ve <span class="italic">built</span>.</h2>
+            <div class="filter-row reveal">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="software">Software Development</button>
-                <button class="filter-btn" data-filter="web-dev">Web Development</button>
-                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="software">Software</button>
+                <button class="filter-btn" data-filter="web-dev">Web</button>
+                <button class="filter-btn" data-filter="ml">ML</button>
             </div>
-            <div class="work-content">
-                <div class="card" data-category="software" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="box">
-                        <div class="text">Rainfall Prediction Using ML</div>
-                        <p>Developed a machine learning model to predict rainfall patterns using historical weather data. Implemented various ML algorithms and achieved improved prediction accuracy.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908/Rainfall-Prediction-Using-ML" target="_blank"><i class="fa fa-github"></i> View Project</a>
-                        </div>
+        </div>
+
+        <div class="bento">
+            <!-- Tall card -->
+            <article class="bento-card tilt span-2-row" data-category="ml" data-hover="Open">
+                <div class="card-tag">01 / Machine Learning</div>
+                <div class="card-preview preview-rain">
+                    <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path class="grid-line" d="M0 180 H200"/>
+                        <path class="chart-area" d="M0 160 L20 140 L40 150 L60 110 L80 130 L100 80 L120 100 L140 60 L160 90 L180 50 L200 70 L200 220 L0 220 Z"/>
+                        <path class="chart-line" d="M0 160 L20 140 L40 150 L60 110 L80 130 L100 80 L120 100 L140 60 L160 90 L180 50 L200 70"/>
+                        <g class="chart-dots">
+                            <circle cx="60" cy="110" r="3"/><circle cx="120" cy="100" r="3"/><circle cx="180" cy="50" r="3"/>
+                        </g>
+                    </svg>
+                    <span class="drop"></span><span class="drop"></span><span class="drop"></span>
+                    <span class="drop"></span><span class="drop"></span><span class="drop"></span>
+                </div>
+                <div class="card-body">
+                    <h3>Rainfall Prediction</h3>
+                    <p>An ML model trained on historical weather to forecast rainfall patterns. Algorithm comparison, feature engineering, honest accuracy reporting.</p>
+                    <div class="card-foot">
+                        <span class="card-stack">Python · scikit-learn · pandas</span>
+                        <a href="https://github.com/abhay0908/Rainfall-Prediction-Using-ML" target="_blank" rel="noopener" class="card-link" data-hover="GitHub">
+                            <i class="fa-brands fa-github"></i> Repo
+                        </a>
                     </div>
                 </div>
-                <div class="card" data-category="software" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                    <div class="box">
-                        <div class="text">Student Management System</div>
-                        <p>Built a full-stack Django application for managing student records, courses, and grades. Features include user authentication, CRUD operations, and a responsive dashboard.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908/Student-Management-System" target="_blank"><i class="fa fa-github"></i> View Project</a>
-                        </div>
+            </article>
+
+            <!-- Wide card -->
+            <article class="bento-card tilt span-2-col" data-category="web-dev" data-hover="Open">
+                <div class="card-tag">02 / Web Development</div>
+                <div class="card-preview preview-window">
+                    <div class="win-bar"><span></span><span></span><span></span></div>
+                    <div class="win-row long"></div>
+                    <div class="win-row"></div>
+                    <div class="win-row medium"></div>
+                    <div class="win-row"></div>
+                </div>
+                <div class="card-body">
+                    <h3>Student Management System</h3>
+                    <p>Full-stack Django app for records, courses &amp; grades. Auth, CRUD, responsive dashboard.</p>
+                    <div class="card-foot">
+                        <span class="card-stack">Django · PostgreSQL · Bootstrap</span>
+                        <a href="https://github.com/abhay0908/Student-Management-System" target="_blank" rel="noopener" class="card-link" data-hover="GitHub">
+                            <i class="fa-brands fa-github"></i> Repo
+                        </a>
                     </div>
                 </div>
-                <div class="card" data-category="software" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="box">
-                        <div class="text">Eyesight Saviour – Retinopathy Detection</div>
-                        <p>Developed a deep learning-based project for detecting diabetic retinopathy from retinal images. Implemented CNN models and achieved high accuracy in disease detection.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908/Eyesight-Saviour" target="_blank"><i class="fa fa-github"></i> View Project</a>
-                        </div>
+                <div class="card-deco">
+                    <span>SMS</span><span>2024</span>
+                </div>
+            </article>
+
+            <!-- Square card -->
+            <article class="bento-card tilt" data-category="ml" data-hover="Open">
+                <div class="card-tag">03 / Deep Learning</div>
+                <div class="card-preview preview-eye">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="60" cy="60" r="42" class="eye-outer"/>
+                        <circle cx="60" cy="60" r="22" class="eye-iris"/>
+                        <circle cx="60" cy="60" r="8"  class="eye-pupil"/>
+                        <circle cx="68" cy="52" r="3"  class="eye-glint"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h3>Eyesight Saviour</h3>
+                    <p>CNN-based diabetic retinopathy detection from retinal images.</p>
+                    <div class="card-foot">
+                        <span class="card-stack">TensorFlow · CNN · OpenCV</span>
+                        <a href="https://github.com/abhay0908/Eyesight-Saviour" target="_blank" rel="noopener" class="card-link" data-hover="GitHub">
+                            <i class="fa-brands fa-github"></i> Repo
+                        </a>
                     </div>
                 </div>
-                <div class="card" data-category="software" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                    <div class="box">
-                        <div class="text">E-learning Platform</div>
-                        <p>Created a comprehensive e-learning platform with course creation, student enrollments, and progress tracking. Features include video lectures, quizzes, and a student dashboard.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/abhay0908/E-learning-Platform" target="_blank"><i class="fa fa-github"></i> View Project</a>
-                        </div>
+            </article>
+
+            <!-- Wide card -->
+            <article class="bento-card tilt span-2-col" data-category="web-dev" data-hover="Open">
+                <div class="card-tag">04 / Web Platform</div>
+                <div class="card-preview preview-play">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="60" cy="60" r="44" class="play-ring"/>
+                        <polygon points="50,42 50,78 82,60" class="play-tri"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <h3>E-Learning Platform</h3>
+                    <p>Course authoring, enrolments, progress tracking, video lectures, quizzes &amp; a student dashboard.</p>
+                    <div class="card-foot">
+                        <span class="card-stack">Django · SQLite · JS</span>
+                        <a href="https://github.com/abhay0908/E-learning-Platform" target="_blank" rel="noopener" class="card-link" data-hover="GitHub">
+                            <i class="fa-brands fa-github"></i> Repo
+                        </a>
                     </div>
                 </div>
-            </div>
+                <div class="card-deco">
+                    <span>EDU</span><span>∞</span>
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Skills Section Start -->
+    <!-- Skills -->
     <section class="skills" id="skills">
-        <div class="max-width">
-            <h2 class="title">My Skills</h2>
-            <div class="skills-content">
-                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="text">My technical expertise & experiences.</div>
-                    <p>I'm passionate about technology and continuously expanding my skill set. Currently focusing on <b>Software Engineering</b>, <b>Full-Stack Development</b>, and <b>Web Technologies</b>. I have experience with <b>Django</b>, <b>SQL</b>, <b>REST APIs</b>, and various programming languages. Always eager to learn new technologies and solve complex problems.</p>
+        <div class="section-head">
+            <span class="section-num">04 —</span>
+            <span class="section-label">Toolbox</span>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skills-intro">
+                <h2 class="section-title reveal">Tools I <span class="italic">reach for</span>.</h2>
+                <p class="reveal">Stack ranked by what I use most often, not by what looks nicest on a CV. Always learning — the list edits itself.</p>
+            </div>
+
+            <div class="skills-list">
+                <div class="skill-row reveal" style="--pct: 90%">
+                    <div class="skill-head"><span>Python</span><span class="pct">90</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
                 </div>
-                <div class="column right" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="bars">
-                        <div class="info">
-                            <span>Python</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="line python" style="--skill-percent: 90%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Software Engineering</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="line software-eng" style="--skill-percent: 85%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Django</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="line django" style="--skill-percent: 80%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>Machine Learning</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="line ml" style="--skill-percent: 75%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>SQL</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="line sql" style="--skill-percent: 80%"></div>
-                    </div>
-                    <div class="bars">
-                        <div class="info">
-                            <span>REST APIs</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="line api" style="--skill-percent: 75%"></div>
-                    </div>
+                <div class="skill-row reveal" style="--pct: 85%">
+                    <div class="skill-head"><span>Software Engineering</span><span class="pct">85</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
+                </div>
+                <div class="skill-row reveal" style="--pct: 80%">
+                    <div class="skill-head"><span>Django</span><span class="pct">80</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
+                </div>
+                <div class="skill-row reveal" style="--pct: 80%">
+                    <div class="skill-head"><span>SQL</span><span class="pct">80</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
+                </div>
+                <div class="skill-row reveal" style="--pct: 75%">
+                    <div class="skill-head"><span>Machine Learning</span><span class="pct">75</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
+                </div>
+                <div class="skill-row reveal" style="--pct: 75%">
+                    <div class="skill-head"><span>REST APIs</span><span class="pct">75</span></div>
+                    <div class="skill-track"><span class="skill-fill"></span></div>
                 </div>
             </div>
+        </div>
+
+        <div class="tag-cloud reveal">
+            <span>Flask</span><span>Pandas</span><span>NumPy</span><span>scikit-learn</span>
+            <span>TensorFlow</span><span>PostgreSQL</span><span>Git</span><span>Linux</span>
+            <span>HTML / CSS</span><span>JavaScript</span><span>OOP</span><span>Data Structures</span>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="contact" id="contact">
-        <div class="max-width">
-            <h2 class="title">Contact me</h2>
-            <div class="contact-content">
-                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="text">Get in Touch</div>
-                    <p>I've provided my contact information below. Feel free to reach out if you have any questions, suggestions, or would like to collaborate on a project. I'll respond as soon as possible.</p>
-                    <div class="icons">
-                        <div class="row">
-                            <i class="fa fa-user"></i>
-                            <div class="info">
-                                <div class="head">Name</div>
-                                <div class="sub-title">Kunwar Abhay Singh</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-road"></i>
-                            <div class="info">
-                                <div class="head">Address</div>
-                                <div class="sub-title">Lucknow, Uttar Pradesh</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-phone"></i>
-                            <div class="info">
-                                <div class="head">Mobile</div>
-                                <div class="sub-title">9125252735</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <i class="fa fa-envelope"></i>
-                            <div class="info">
-                                <div class="head">Email</div>
-                                <div class="sub-title">kunwar.abhay.singh09@gmail.com</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column right contact-form" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="text">Message me</div>
-                    <form id="contactForm" action="https://formspree.io/f/xqaqnokp" method="POST">
-                        <input type="hidden" name="_subject" value="New Portfolio Contact!">
-                        <div class="fields">
-                            <div class="field name">
-                                <input type="text" name="name" placeholder="Name" required>
-                            </div>
-                            <div class="field email">
-                                <input type="email" name="email" placeholder="Email" required>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <input type="text" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="field textarea">
-                            <textarea name="message" cols="30" rows="10" placeholder="Message.." required></textarea>
-                        </div>
-                        <div class="button-area">
-                            <button type="submit">Send message</button>
-                        </div>
-                        <div id="formMessage" class="form-message"></div>
-                    </form>
-                </div>
-            </div> 
+        <div class="section-head">
+            <span class="section-num">05 —</span>
+            <span class="section-label">Get in touch</span>
         </div>
-    </section>
-    
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer container">
-            <h1>Thank you for visiting</h1>
-            <h2>Let's also get connected on</h2>
-            <div class="social-icon">
-                <div class="social-item">
-                    <a href="https://www.instagram.com/a_bhay_singh/" target="_blank"><img src="https://img.icons8.com/windows/32/000000/instagram-new.png"/></a>
+
+        <div class="contact-hero reveal">
+            <h2>Have a project in <span class="italic">mind?</span></h2>
+            <a href="mailto:kunwar.abhay.singh09@gmail.com" class="contact-email" data-hover="Email">
+                kunwar.abhay.singh09@gmail.com
+                <i class="fa-solid fa-arrow-up-right"></i>
+            </a>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-row reveal">
+                    <span class="info-key">Based in</span>
+                    <span class="info-val">Lucknow, Uttar Pradesh, IN</span>
                 </div>
-                <div class="social-item">
-                    <a href="https://github.com/abhay0908" target="_blank"><img src="https://img.icons8.com/windows/32/000000/github.png"/></a>
+                <div class="info-row reveal">
+                    <span class="info-key">Phone</span>
+                    <span class="info-val">+91 91252 52735</span>
                 </div>
-                <div class="social-item">
-                    <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank"><img src="https://img.icons8.com/windows/32/000000/linkedin.png"/></a>
+                <div class="info-row reveal">
+                    <span class="info-key">Socials</span>
+                    <span class="info-val social-line">
+                        <a href="https://www.linkedin.com/in/kunwar-abhay-singh-17a58820b/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/abhay0908" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://www.instagram.com/a_bhay_singh/" target="_blank" rel="noopener">Instagram</a>
+                    </span>
                 </div>
             </div>
-            <p>Created By: Kunwar Abhay Singh || Copyright © 2023. All rights reserved.</p>
+
+            <form id="contactForm" class="contact-form reveal" action="https://formspree.io/f/xqaqnokp" method="POST">
+                <input type="hidden" name="_subject" value="New Portfolio Contact!">
+                <label>
+                    <span>Name</span>
+                    <input type="text" name="name" required autocomplete="name">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" required autocomplete="email">
+                </label>
+                <label>
+                    <span>Subject</span>
+                    <input type="text" name="subject" required>
+                </label>
+                <label>
+                    <span>Message</span>
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+                <button type="submit" class="btn btn-primary form-submit" data-hover="Send">
+                    <span>Send message</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <div id="formMessage" class="form-message"></div>
+            </form>
         </div>
-    </footer>  
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-marquee" aria-hidden="true">
+            <div class="marquee-track footer-track">
+                <span class="italic">Let&rsquo;s build something</span><span class="dot-sep">●</span>
+                <span>Available for work</span><span class="dot-sep">●</span>
+                <span class="italic">Let&rsquo;s build something</span><span class="dot-sep">●</span>
+                <span>Available for work</span><span class="dot-sep">●</span>
+                <span class="italic">Let&rsquo;s build something</span><span class="dot-sep">●</span>
+                <span>Available for work</span><span class="dot-sep">●</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-col">
+                <span class="foot-key">© 2025</span>
+                <span>Kunwar Abhay Singh</span>
+            </div>
+            <div class="footer-col center">
+                <a href="#home" class="back-top">
+                    <i class="fa-solid fa-arrow-up"></i> Back to top
+                </a>
+            </div>
+            <div class="footer-col right">
+                <span class="foot-key">Designed &amp; built</span>
+                <span>with care, in Lucknow.</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
